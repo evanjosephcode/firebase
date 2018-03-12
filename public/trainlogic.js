@@ -1,12 +1,12 @@
-// Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDP5XRPt6CjMpDFNDEmvIhuElLq5lhQkgs",
-        authDomain: "mwclass-seaman.firebaseapp.com",
-        databaseURL: "https://mwclass-seaman.firebaseio.com",
-        projectId: "mwclass-seaman",
-        storageBucket: "",
-        messagingSenderId: "78077600785"
-};
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDP5XRPt6CjMpDFNDEmvIhuElLq5lhQkgs",
+    authDomain: "mwclass-seaman.firebaseapp.com",
+    databaseURL: "https://mwclass-seaman.firebaseio.com",
+    projectId: "mwclass-seaman",
+    storageBucket: "mwclass-seaman.appspot.com",
+    messagingSenderId: "78077600785"
+  };
 
 firebase.initializeApp(config);
 
@@ -16,20 +16,20 @@ var database = firebase.database();
 // NOTE
 
 // saying undefined for #add-train-btn and not understanding why
-$("#train").on("click", function(event) {
+$("#add-train-btn").on("click", function(event) {
   event.preventDefault();
 
   // Grabs user input
   var trainName = $("#train-name-input").val().trim();
   var trainDestination = $("#destination-input").val().trim();
   //not sure about the way this one is formatted with format'X' for military time
-  var trainStart = moment($("#start-input").val().trim(), "HH:mm").format("X");
+  var trainStart = $("#start-input").val().trim();
   var trainFrequency = $("#frequency-input").val().trim();
 
   // Creates local "temporary" object for holding employee data
   var newTrain = {
     name: trainName,
-    destination: trainDest,
+    destination: trainDestination,
     start: trainStart,
     frequency: trainFrequency
   };
@@ -60,15 +60,18 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 
   // Store everything into a variable.
   var trainName = childSnapshot.val().name;
-  var trainDestination = childSnapshot.val().role;
+  var trainDestination = childSnapshot.val().destination;
   var trainStart = childSnapshot.val().start;
-  var trainFrequency = childSnapshot.val().rate;
+  var trainFrequency = childSnapshot.val().frequency;
 
   // Employee Info
   console.log(trainName);
   console.log(trainDestination);
   console.log(trainStart);
   console.log(trainFrequency);
+
+  var trainArrival;
+  var trainMinutes;
 
   //logic commeneted out for a different logic scenario 
 
@@ -85,7 +88,7 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
   // console.log(empBilled);
 
   $("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDestination + "</td><td>" +
-  trainStart + "</td><td>" + trainFrequency + "</td></tr>");
+  trainFrequency + "</td><td>" + trainArrival + "</td><td>" + trainMinutes + "</td></tr>");
 });
 
 
