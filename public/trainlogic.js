@@ -1,6 +1,6 @@
   // Initialize Firebase
   var config = {
-    apiKey: api.apiKey,
+    apiKey: "AIzaSyDP5XRPt6CjMpDFNDEmvIhuElLq5lhQkgs",
     authDomain: "mwclass-seaman.firebaseapp.com",
     databaseURL: "https://mwclass-seaman.firebaseio.com",
     projectId: "mwclass-seaman",
