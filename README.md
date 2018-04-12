@@ -1,6 +1,5 @@
 # Train Next Arrival
-## POC using Firebase & MomentJS Library
-## https://evanjosephcode.github.io/firebase/public/index.html
+## POC using Firebase & MomentJS Library<br>https://evanjosephcode.github.io/firebase/public/index.html
 *With this you can view existing user inputs of trains.*<br><br>
 **the more exciting part though:**<br>
 add your own<br> 
